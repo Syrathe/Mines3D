@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347733fffe03fac4cb27c6b9505cc1d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mine: 1
+  mine: 0
   radius: 1.42
   tile: {fileID: 6079229291666772088}
   mNeighbors:
