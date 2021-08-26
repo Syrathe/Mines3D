@@ -5,25 +5,32 @@ using UnityEngine.AI;
 
 public class BrickContainer : MonoBehaviour
 {
-    private int x = 5;
+    private int x = 10;
     [SerializeField]
     private Brick brick;
-    public NavMeshSurface [] surfaces;
+    public NavMeshSurface  surface;
 
     void Start()
     {
         for (int h = 0; h < x; h++)
         {
+            Debug.Log("h ");
             for (int i = 0; i < x; i++)
             {
-                Instantiate(brick, new Vector3(i, 0, h), Quaternion.identity);
-                surfaces[i].BuildNavMesh();
+                Debug.Log("i ");
+                brick = Instantiate(brick, new Vector3(i, 0, h), Quaternion.identity);
+                brick.transform.SetParent(this.transform);
             }
         }
 
-        for (int i = 0; i < surfaces.Length; i++) 
+        surface.BuildNavMesh();
+
+        //surface = GameObject.FindGameObjectsWithTag("Brick");
+
+        /* for (int i = 0; i < surfaces.Length; i++) 
         {
-            surfaces [i].BuildNavMesh ();    
-        } 
+            //Debug.Log(surfaces[i]);
+            /* surfaces[i].BuildNavMesh();   */  
+        //}  */
     }
 }
