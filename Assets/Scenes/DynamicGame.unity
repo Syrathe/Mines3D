@@ -292,13 +292,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648975533}
-  m_LocalRotation: {x: 0.1386435, y: 0.08630759, z: -0.01212974, w: 0.9864998}
-  m_LocalPosition: {x: 0, y: 5, z: -10}
+  m_LocalRotation: {x: 0.25818864, y: -0.06737957, z: 0.018054305, w: 0.9635729}
+  m_LocalPosition: {x: 6, y: 6, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 16, y: 10, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: -8, z: 0}
 --- !u!1 &1052336168
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 9133089093718976908, guid: 8ac8583b74f6b2d40a5555d471ff151e, type: 3}
+  player: {fileID: 4068744612384200807, guid: 209d81710f389f34dab4b6f17d90729e, type: 3}
   surface: {fileID: 1052336171}
 --- !u!4 &1052336170
 Transform:
@@ -339,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052336168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3304.0203, y: -2354.9995, z: 4553.4297}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

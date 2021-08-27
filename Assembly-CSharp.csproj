@@ -39,7 +39,7 @@
      <Compile Include="Assets\Scripts\Brick.cs" />
      <Compile Include="Assets\Scripts\CameraFollower.cs" />
      <Compile Include="Assets\Scripts\Main_Menu\MainMenu.cs" />
-     <Compile Include="Assets\Scripts\CharacterController.cs" />
+     <Compile Include="Assets\Scripts\CharControl.cs" />
      <Compile Include="Assets\Scripts\BrickContainer.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -643,13 +643,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{9e24e780-41f5-4407-1cc2-a150872a9c15}</Project>
-      <Name>NavMeshComponents</Name>
-    </ProjectReference>
     <ProjectReference Include="NavMeshComponentsEditor.csproj">
       <Project>{7c6ca65d-726c-9b68-2052-7253fa22f7fb}</Project>
       <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{9e24e780-41f5-4407-1cc2-a150872a9c15}</Project>
+      <Name>NavMeshComponents</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

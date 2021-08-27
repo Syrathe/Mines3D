@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CharacterController : MonoBehaviour
+public class CharControl : MonoBehaviour
 {
     private NavMeshAgent mMeshAgent;
     private int blood = 5;
@@ -17,6 +17,18 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetMouseButtonDown(1)){
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)) {
+                Debug.Log("Le diste click secundario a un ladrillo");
+                GameObject hitObject = hit.transform.gameObject;
+                Brick brick = hitObject.GetComponent<Brick>();
+                if (brick != null) {
+                    brick.Blocked();
+                }
+            }
+        }
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;

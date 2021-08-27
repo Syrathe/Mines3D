@@ -6,11 +6,14 @@ using UnityEditor;
 public class Brick : MonoBehaviour
 {    
     private static Dictionary<string, Sprite> mTileImages;
+    private bool mShowed = false;
     public bool mine = false;
     public float radius = 1.42f;
     public SpriteRenderer tile = null;
     public List<Brick> mNeighbors;
-    private bool mShowed = false;
+    public bool blocked = false;
+    public bool question = false;
+    
     public static void BuildSpritesMap()
     {
         if (mTileImages == null) {
@@ -22,21 +25,13 @@ public class Brick : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         BuildSpritesMap();
-    }/* 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
- */
-    void OnValidate()
-    {
-        FindNeighbors();
+        mine = Random.value < 0.17;
+        if (mine) 
+            BrickContainer.addMine();
+        Invoke("FindNeighbors", 0.1f);
     }
 
     private void FindNeighbors()
@@ -52,13 +47,12 @@ public class Brick : MonoBehaviour
                 mNeighbors.Add(brick.GetComponent<Brick>());
             }
         }
-
-        Debug.Log($"{mNeighbors.Count} neighbors");
     }
 
     public void ShowSecret()
     {
         if (mShowed) return;
+        if (blocked) return;
 
         mShowed = true;
 
@@ -73,9 +67,35 @@ public class Brick : MonoBehaviour
             });
             name = $"Tile{num}";
         }
-
         Sprite sprite;
         if (mTileImages.TryGetValue(name, out sprite))
             tile.sprite = sprite;
+    }
+
+    public void Blocked(){
+        if(mShowed)return;
+
+        string name = "TileFlag";
+        Sprite sprite;
+        if (mTileImages.TryGetValue(name, out sprite) && (blocked==false) && (question==false)){
+            blocked = true;
+            tile.sprite = sprite;
+            return;
+        }
+
+        name = "TileQuestion"; 
+        if (mTileImages.TryGetValue(name, out sprite) && (blocked==true)){
+            blocked=false;
+            question=true;
+            tile.sprite=sprite;
+            return;
+        }
+
+        name = "TileUnknown";
+        if(mTileImages.TryGetValue(name, out sprite)){
+            question=false;
+            tile.sprite=sprite;
+            return;
+        }
     }
 }
