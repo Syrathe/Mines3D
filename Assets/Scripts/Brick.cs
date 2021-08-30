@@ -28,10 +28,18 @@ public class Brick : MonoBehaviour
     void Start()
     {
         BuildSpritesMap();
-        mine = Random.value < 0.17;
-        if (mine) 
-            BrickContainer.addMine();
-        Invoke("FindNeighbors", 0.1f);
+        if (transform.position.x != 1 || transform.position.z != 1)
+        {
+            mine = Random.value < 0.17;
+            if (mine) 
+                BrickContainer.addMine();
+            Invoke("FindNeighbors", 0.05f);
+        }
+        else
+        {
+            Debug.Log("This is origin, will check it");
+            Invoke("checkOrigin", 0.1f);
+        }
     }
 
     private void FindNeighbors()
@@ -47,6 +55,34 @@ public class Brick : MonoBehaviour
                 mNeighbors.Add(brick.GetComponent<Brick>());
             }
         }
+    }
+
+    private void checkOrigin(){
+        var allBricks = GameObject.FindGameObjectsWithTag("Brick");
+
+        mNeighbors = new List<Brick>();
+
+        for (int i = 0; i < allBricks.Length; i++) {
+            var brick = allBricks[i];
+            var distance = Vector3.Distance(transform.position, brick.transform.position);
+            if (0 < distance && distance <= radius) {
+                mNeighbors.Add(brick.GetComponent<Brick>());
+            }
+        }
+        string name;
+        Debug.Log("Checking Origin");
+        int num = 0;
+        
+        mNeighbors.ForEach(brick => {
+            if (brick.mine) num += 1;
+            Debug.Log($"Num is now{num}");
+        });
+        name = $"Tile{num}";
+        Debug.Log($"The name is{name}");
+
+        Sprite sprite;
+        if (mTileImages.TryGetValue(name, out sprite))
+            tile.sprite = sprite;
     }
 
     public void ShowSecret()
