@@ -37,9 +37,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
-     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshLink.cs" />
      <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
      <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />
+     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshLink.cs" />
      <None Include="Assets\NavMeshComponents\Scripts\NavMeshComponents.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

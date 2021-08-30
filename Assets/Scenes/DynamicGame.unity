@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 648975536}
   - component: {fileID: 648975535}
   - component: {fileID: 648975534}
+  - component: {fileID: 648975537}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -292,13 +293,26 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648975533}
-  m_LocalRotation: {x: 0.25818864, y: -0.06737957, z: 0.018054305, w: 0.9635729}
-  m_LocalPosition: {x: 6, y: 6, z: -5}
+  m_LocalRotation: {x: 0.17918396, y: -0.8085044, z: 0.31035575, w: 0.46679014}
+  m_LocalPosition: {x: 6, y: 6, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30, y: -8, z: 0}
+  m_LocalEulerAnglesHint: {x: 42, y: -120, z: 0}
+--- !u!114 &648975537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648975533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede7ba03650643a4baed184286a77f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothSpeed: 5
 --- !u!1 &1052336168
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,8 +343,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbc3950eadaeda4f9d0605643037974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brick: {fileID: 9133089093718976908, guid: 8ac8583b74f6b2d40a5555d471ff151e, type: 3}
   player: {fileID: 4068744612384200807, guid: 209d81710f389f34dab4b6f17d90729e, type: 3}
+  brick: {fileID: 9133089093718976908, guid: 8ac8583b74f6b2d40a5555d471ff151e, type: 3}
   surface: {fileID: 1052336171}
 --- !u!4 &1052336170
 Transform:

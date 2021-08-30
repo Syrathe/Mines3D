@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637653319022503397
+      ticks: 637658750754363313
     m_Hash: 3792016944
   m_LockFileStatus:
     m_FilePath: C:/Users/alexa/OneDrive/Documentos/Unity Projects/Mines3D/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637654178780106543
+      ticks: 637658751312887822
     m_Hash: 2739831012
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
