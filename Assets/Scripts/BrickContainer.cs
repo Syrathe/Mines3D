@@ -9,13 +9,10 @@ public class BrickContainer : MonoBehaviour
     private GameObject player;
     [SerializeField]
     private Brick brick;
-    private int x = 10;
+    private int x = MainMenu.getDiff();
     [SerializeField]
     private static int mines=0;
     
-    
-    
-
     public NavMeshSurface  surface;
 
     void Start()
