@@ -7,7 +7,7 @@ public class Brick : MonoBehaviour
 {    
     private static Dictionary<string, Sprite> mTileImages;
     private bool mShowed = false;
-    public bool mine = false;
+    public bool mine;
     public float radius = 1.42f;
     public SpriteRenderer tile = null;
     public List<Brick> mNeighbors;
@@ -30,14 +30,10 @@ public class Brick : MonoBehaviour
         BuildSpritesMap();
         if (transform.position.x != 1 || transform.position.z != 1)
         {
-            mine = Random.value < 0.17;
-            if (mine) 
-                BrickContainer.addMine();
             Invoke("FindNeighbors", 0.05f);
         }
         else
         {
-            Debug.Log("This is origin, will check it");
             Invoke("checkOrigin", 0.1f);
         }
     }
@@ -70,15 +66,12 @@ public class Brick : MonoBehaviour
             }
         }
         string name;
-        Debug.Log("Checking Origin");
         int num = 0;
         
         mNeighbors.ForEach(brick => {
             if (brick.mine) num += 1;
-            Debug.Log($"Num is now{num}");
         });
         name = $"Tile{num}";
-        Debug.Log($"The name is{name}");
 
         Sprite sprite;
         if (mTileImages.TryGetValue(name, out sprite))
@@ -116,6 +109,8 @@ public class Brick : MonoBehaviour
         if (mTileImages.TryGetValue(name, out sprite) && (blocked==false) && (question==false)){
             blocked = true;
             tile.sprite = sprite;
+            Debug.Log("Will call GameOver Check");
+            BrickContainer.Instance.checkGameOver();
             return;
         }
 

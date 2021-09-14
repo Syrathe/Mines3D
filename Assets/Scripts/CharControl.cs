@@ -21,7 +21,6 @@ public class CharControl : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                Debug.Log("Le diste click secundario a un ladrillo");
                 GameObject hitObject = hit.transform.gameObject;
                 Brick brick = hitObject.GetComponent<Brick>();
                 if (brick != null) {
