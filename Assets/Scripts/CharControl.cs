@@ -42,6 +42,11 @@ public class CharControl : MonoBehaviour
         DetectMine();
     }
 
+    public void DisablePlayer(){
+        Debug.Log("I shall off");
+        this.enabled = false;
+    }
+
     private void DetectMine()
     {
         Ray ray = new Ray(transform.position, -transform.up);

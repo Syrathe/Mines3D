@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class BrickContainer : MonoBehaviour
 {
     private static BrickContainer _instance;
 
     [SerializeField]
+    private GameObject gameOverText;
+    [SerializeField]
     private GameObject player;
+    private GameObject playerChar;
     [SerializeField]
     private Brick brick;
     [SerializeField]
     public List<Brick> mineArray;
     public List<Brick> noMineArray;
     private int x = MainMenu.getDiff();
-    [SerializeField]
-    private static int mines=0;
-    
+    private bool _gameOver =false;    
     
     public NavMeshSurface  surface;
 
@@ -65,14 +67,31 @@ public class BrickContainer : MonoBehaviour
             }
         }
         surface.BuildNavMesh();
-        Instantiate(player, new Vector3(1,1,1), Quaternion.identity);
+        playerChar = Instantiate(player, new Vector3(1,1,1), Quaternion.identity);
+    }
+
+    void Update(){
+        if (_gameOver){
+            if (Input.GetKeyDown("x"))
+            {
+                Application.Quit();
+            }
+            if (Input.GetKeyDown("r"))
+            {
+                 SceneManager.LoadScene("MainMenu");
+            }
+        }
     }
 
     public bool checkGameOver(){
         Debug.Log("Will check for game over");
         if( ( bricksAreUnchecked() ) && ( minesAreChecked() ) )
         {
-            Debug.Log("Game IS over");
+            Debug.Log("Game IS over");/* 
+            var playingChar = GameObject.FindGameObjectWithTag("Player"); */
+            gameOverText.GetComponent<GameOverText>().showText();
+            playerChar.GetComponent<CharControl>().DisablePlayer();
+            _gameOver = true;
             return true;
         } 
         else
@@ -82,24 +101,19 @@ public class BrickContainer : MonoBehaviour
         }
     }
 
-    private bool minesAreChecked(){
-        Debug.Log("check for mines");
+    private bool minesAreChecked(){//refine
         foreach (var brick in mineArray)
         {
             if (brick.tile.sprite.name == "TileFlag" || brick.tile.sprite.name == "TileMine")
             {
-                Debug.Log("Esta marcada");
             }else{
-                Debug.Log("Mines pending marking");
                 return false;
             }
         } 
-        Debug.Log("Mines are all marked");
         return true;
     }
 
     private bool bricksAreUnchecked(){
-        Debug.Log("check for bricks");
         foreach (var brick in noMineArray)
         {
             if (brick.tile.sprite.name == "TileFlag")
@@ -111,9 +125,5 @@ public class BrickContainer : MonoBehaviour
         } 
         Debug.Log("All bricks are unmarked");
         return true;
-    }
-
-    public static int getMines(){
-        return mines;
     }
 }

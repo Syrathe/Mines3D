@@ -41,6 +41,7 @@
      <Compile Include="Assets\Scripts\Main_Menu\MainMenu.cs" />
      <Compile Include="Assets\Scripts\CharControl.cs" />
      <Compile Include="Assets\Scripts\BrickContainer.cs" />
+     <Compile Include="Assets\Scripts\GameOverText.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

@@ -94,6 +94,11 @@ public class Brick : MonoBehaviour
             mNeighbors.ForEach(brick => {
                 if (brick.mine) num += 1;
             });
+            if (num==0){
+                mNeighbors.ForEach(brick =>{
+                    brick.ShowSecret();
+                });
+            }
             name = $"Tile{num}";
         }
         Sprite sprite;
@@ -119,6 +124,7 @@ public class Brick : MonoBehaviour
             blocked=false;
             question=true;
             tile.sprite=sprite;
+            BrickContainer.Instance.checkGameOver();
             return;
         }
 
